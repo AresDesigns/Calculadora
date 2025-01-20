@@ -1,287 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_grey"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-
-    <TextView
-        android:id="@+id/textView_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="0"
-        android:textAlignment="viewEnd"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/textView_operation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="0"
-        android:textAlignment="viewEnd"
-        android:textColor="@color/white"
-        android:textSize="40sp" />
-
-    <TextView
-        android:id="@+id/line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_gravity="end"
-        android:layout_marginBottom="10dp"
-        android:background="#575757" />
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:columnCount="4"
-        android:padding="1dp"
-        android:rowCount="5">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_weight="1"
+    android:columnCount="4"
+    android:padding="1dp"
+    android:rowCount="5">
 
         <Button
             android:id="@+id/button_clear"
+            app:cornerRadius="50dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dark"
             android:text="@string/operation_clear"
             android:textColor="@color/orange"
-            android:textSize="16sp"
-            app:cornerRadius="50dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_plus_minus"
+            app:cornerRadius="50dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dark"
             android:text="@string/operation_plus_minus"
-            android:textSize="16sp"
-            app:cornerRadius="50dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_percent"
+            app:cornerRadius="50dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dark"
             android:text="@string/operation_percent"
-            android:textSize="16sp"
-            app:cornerRadius="50dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_delete"
+            app:cornerRadius="50dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/orange"
             android:text="@string/operation_delete"
-            android:textSize="16sp"
-            app:cornerRadius="50dp" />
+            android:textColor="@color/grey_dark"
+            android:textSize="16sp" />
 
         <!-- Agrega los demás botones de la misma manera -->
 
         <Button
             android:id="@+id/button_seven"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_seven"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_eight"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_eight"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_nine"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_nine"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_divide"
+            app:cornerRadius="50dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/orange"
             android:text="@string/operation_divide"
-            android:textSize="16sp"
-            app:cornerRadius="50dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_four"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_four"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_five"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_five"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_six"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_six"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_multiply"
+            app:cornerRadius="50dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/orange"
             android:text="@string/operation_multiply"
-            android:textSize="16sp"
-            app:cornerRadius="50dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_one"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_one"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_two"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_two"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_three"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_three"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_subtract"
+            app:cornerRadius="50dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/orange"
             android:text="@string/operation_subtract"
-            android:textSize="16sp"
-            app:cornerRadius="50dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_zero"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/number_zero"
-            android:textSize="16sp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_dot"
+            app:cornerRadius="50dp"
+            app:strokeColor="@color/corner"
+            app:strokeWidth="2dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/grey_dar"
             android:text="@string/operation_dot"
-            android:textSize="16sp"
-            app:cornerRadius="50dp"
-            app:strokeColor="@color/corner"
-            app:strokeWidth="2dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_equal"
+            app:cornerRadius="50dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnSpan="1"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
-            android:backgroundTint="@color/orange"
+            android:backgroundTint="@color/grey_dark"
             android:text="@string/operation_equal"
-            android:textSize="16sp"
-            app:cornerRadius="50dp" />
+            android:textColor="@color/green"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_sum"
+            app:cornerRadius="50dp"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="110dp"
             android:layout_columnWeight="1"
             android:layout_margin="1dp"
             android:backgroundTint="@color/orange"
             android:text="@string/operation_sum"
-            android:textSize="16sp"
-            app:cornerRadius="50dp" />
+            android:textSize="16sp" />
 
-    </GridLayout>
-
-</LinearLayout>
+</GridLayout>

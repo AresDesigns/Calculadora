@@ -9,4 +9,6 @@
     <color name="orange">#d75b1b</color>
     <color name="dark_grey">#272727</color>
     <color name="corner">#565656</color>
+    <color name="red">#D71B1B</color>
+    <color name="green">#53D71B</color>
 </resources>

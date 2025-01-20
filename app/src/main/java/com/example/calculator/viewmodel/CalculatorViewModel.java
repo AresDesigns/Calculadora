@@ -1,5 +1,7 @@
 package com.example.calculator.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -55,22 +57,29 @@ public class CalculatorViewModel extends ViewModel {
             isNewInput = true;
         }
     }
-
     public void onEquals() {
-        if (!currentInput.isEmpty()) {
+
+   if (!currentInput.isEmpty()) {
+        try {
             num2 = Double.parseDouble(currentInput);
             calculator.setNum2(num2);
             double result = calculator.calculate();
             display.setValue(formatNumber(result));
             currentInput = formatNumber(result);
             isNewInput = true;
-            operation.setValue(formatNumber(result) + operator + formatNumber(num2)+"=");
+            operation.setValue(formatNumber(result) + " = " + formatNumber(num1) + operator + formatNumber(num2));
             num1 = result;
-            num2=0;
+            num2 = 0;
+            Log.d("CalculatorViewModel", "onEquals: " + result + " = " + num1 + operator + num2);
+        }catch (NumberFormatException e){
+            display.setValue("Error");
+            currentInput = "";
+            isNewInput = true;
+            num1 = 0;
+            num2 = 0;
         }
         }
-
-
+   }
     public void onClear() {
         calculator.clear();
         currentInput = "";

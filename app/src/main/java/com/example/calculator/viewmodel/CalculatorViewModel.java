@@ -6,23 +6,27 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.calculator.models.CalculatorModel;
 
-public class CalculatorViewModel extends ViewModel {
-    private CalculatorModel calculator;
-    private MutableLiveData<String> display;
-    private String currentInput;
-    private boolean isNewInput;
+import java.text.DecimalFormat;
 
-    public CalculatorViewModel() {
-        calculator = new CalculatorModel();
-        display = new MutableLiveData<>();
-        currentInput = "";
-        isNewInput = true;
-        display.setValue("0");
-    }
+public class CalculatorViewModel extends ViewModel {
+    private final MutableLiveData<String> display = new MutableLiveData<>("0");
+    private final MutableLiveData<String> operation = new MutableLiveData<>("");
+    private String currentInput = "";
+    private boolean isNewInput = true;
+    private double num1 = 0;
+    private double num2 = 0;
+    private char operator = ' ';
+    private CalculatorModel calculator = new CalculatorModel();
 
     public LiveData<String> getDisplay() {
         return display;
     }
+
+    public LiveData<String> getOperation() {
+        return operation;
+    }
+
+
 
     public void onDigit(String digit) {
         if (isNewInput) {
@@ -36,27 +40,64 @@ public class CalculatorViewModel extends ViewModel {
 
     public void onOperator(char op) {
         if (!currentInput.isEmpty()) {
-            calculator.setNum1(Double.parseDouble(currentInput));
+            if (operator != ' ') {
+                onEquals();
+            }
+            num1 = Double.parseDouble(currentInput);
+            calculator.setNum1(num1);
             calculator.setOperator(op);
             currentInput = "";
+            isNewInput = true;
+            operator = op;
+            operation.setValue(formatNumber(num1) + op);
+            display.setValue(formatNumber(num1));
+            currentInput = formatNumber(num1);
             isNewInput = true;
         }
     }
 
     public void onEquals() {
         if (!currentInput.isEmpty()) {
-            calculator.setNum2(Double.parseDouble(currentInput));
+            num2 = Double.parseDouble(currentInput);
+            calculator.setNum2(num2);
             double result = calculator.calculate();
-            display.setValue(Double.isNaN(result) ? "Error" : String.valueOf(result));
-            currentInput = String.valueOf(result);
+            display.setValue(formatNumber(result));
+            currentInput = formatNumber(result);
             isNewInput = true;
+            operation.setValue(formatNumber(result) + operator + formatNumber(num2)+"=");
+            num1 = result;
+            num2=0;
         }
-    }
+        }
+
 
     public void onClear() {
         calculator.clear();
         currentInput = "";
         isNewInput = true;
         display.setValue("0");
+        operation.setValue("");
+        num1 = 0;
+        num2 = 0;
+        operator = ' ';
     }
-}
+
+    public void onDot() {
+        if (!currentInput.contains(".")) {
+            currentInput += ".";
+        }
+        display.setValue(currentInput);
+    }
+
+    public void onBackspace() {
+        if (!currentInput.isEmpty()) {
+            currentInput = currentInput.substring(0, currentInput.length() - 1);
+            display.setValue(currentInput);
+        }
+    }
+
+    private String formatNumber(double number) {
+        DecimalFormat df = new DecimalFormat("#.##");
+        return df.format(number);
+    }
+    }

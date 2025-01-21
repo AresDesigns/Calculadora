@@ -18,7 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
     private CalculatorViewModel viewModel;
     private TextView displayTextView, displayTextView2;
-    private Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonDot, buttonEquals, buttonPlus, buttonMinus, buttonMultiply, buttonDivide, buttonClear, buttonDelete;
+    private Button button0, button1, button2, button3, button4, button5,
+            button6, button7, button8, button9, buttonDot,
+            buttonEquals, buttonPlus, buttonMinus, buttonMultiply,
+            buttonDivide, buttonClear, buttonDelete, buttonPlusMinus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,24 +66,25 @@ public class MainActivity extends AppCompatActivity {
         buttonDivide = findViewById(R.id.button_divide);
         buttonClear = findViewById(R.id.button_clear);
         buttonDelete = findViewById(R.id.button_delete);
+        buttonPlusMinus = findViewById(R.id.button_plus_minus);
     }
 
     private void observeViewModel() {
-        viewModel.getDisplay().observe(this, this::updateDisplay);
         viewModel.getOperation().observe(this, this::updateOperation);
+        viewModel.getResult().observe(this, this::updateResult);
     }
 
-    private void updateDisplay(String display) {
+    private void updateOperation(String operation) {
         if (displayTextView != null) {
-            displayTextView.setText(display);
+            displayTextView.setText(operation);
         } else {
             // Handle the case where displayTextView is null, e.g., log an error or do nothing.
             Log.e("MyClass", "displayTextView is null");
         }
     }
-    private void updateOperation(String operation) {
+    private void updateResult(String result) {
         if (displayTextView2 != null) {
-            displayTextView2.setText(operation);
+            displayTextView2.setText(result);
         } else {
             Log.e("MainActivity", "displayTextView2 is null");
         }
@@ -98,14 +102,15 @@ public class MainActivity extends AppCompatActivity {
         button7.setOnClickListener(v -> viewModel.onDigit("7"));
         button8.setOnClickListener(v -> viewModel.onDigit("8"));
         button9.setOnClickListener(v -> viewModel.onDigit("9"));
+        buttonPlusMinus.setOnClickListener(v -> viewModel.onPlusMinus());
         buttonDot.setOnClickListener(v -> viewModel.onDot());
         if(buttonDelete != null) {
             buttonDelete.setOnClickListener(v -> viewModel.onBackspace());
         }
         // Operator Buttons
         buttonEquals.setOnClickListener(v -> viewModel.onEquals());
-        buttonPlus.setOnClickListener(v -> viewModel.onOperator('+'));
-        buttonMinus.setOnClickListener(v -> viewModel.onOperator('-'));
+        buttonPlus.setOnClickListener(v -> viewModel.OnOperator('+'));
+        buttonMinus.setOnClickListener(v -> viewModel.OnOperator('-'));
         buttonMultiply.setOnClickListener(v -> viewModel.onOperator('*'));
         buttonDivide.setOnClickListener(v -> viewModel.onOperator('/'));
         buttonClear.setOnClickListener(v -> viewModel.onClear());

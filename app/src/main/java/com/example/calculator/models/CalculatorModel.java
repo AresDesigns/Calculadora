@@ -4,11 +4,20 @@ public class CalculatorModel {
     private double num1;
     private double num2;
     private char operator;
+    private double  result;
 
     public CalculatorModel(){
         this.num1 = 0;
         this.num2 = 0;
         this.operator = ' ';
+    }
+
+    public double getResult() {
+        return result;
+    }
+
+    public void setResult(double result) {
+        this.result = result;
     }
 
     public double getNum1() {

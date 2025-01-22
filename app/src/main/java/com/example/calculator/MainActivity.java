@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button0, button1, button2, button3, button4, button5,
             button6, button7, button8, button9, buttonDot,
             buttonEquals, buttonPlus, buttonMinus, buttonMultiply,
-            buttonDivide, buttonClear, buttonDelete, buttonPlusMinus;
+            buttonDivide, buttonClear, buttonPercent ,buttonDelete, buttonPlusMinus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         buttonClear = findViewById(R.id.button_clear);
         buttonDelete = findViewById(R.id.button_delete);
         buttonPlusMinus = findViewById(R.id.button_plus_minus);
+        buttonPercent = findViewById(R.id.button_percent);
     }
 
     private void observeViewModel() {
@@ -111,8 +112,9 @@ public class MainActivity extends AppCompatActivity {
         buttonEquals.setOnClickListener(v -> viewModel.onEquals());
         buttonPlus.setOnClickListener(v -> viewModel.OnOperator('+'));
         buttonMinus.setOnClickListener(v -> viewModel.OnOperator('-'));
-        buttonMultiply.setOnClickListener(v -> viewModel.onOperator('*'));
-        buttonDivide.setOnClickListener(v -> viewModel.onOperator('/'));
+        buttonMultiply.setOnClickListener(v -> viewModel.OnOperator('*'));
+        buttonDivide.setOnClickListener(v -> viewModel.OnOperator('/'));
+        buttonPercent.setOnClickListener(v -> viewModel.OnOperator('%'));
         buttonClear.setOnClickListener(v -> viewModel.onClear());
     }
 }

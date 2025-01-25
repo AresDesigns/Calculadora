@@ -1,13 +1,10 @@
 package com.example.calculator.viewmodel;
 
 import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.example.calculator.models.CalculatorModel;
-
 import java.text.DecimalFormat;
 
 public class CalculatorViewModel extends ViewModel {
@@ -30,7 +27,6 @@ public class CalculatorViewModel extends ViewModel {
         return result;
     }
 
-
     public void onDigit(String digit) {
         if (isNewInput) {
             currentInput = digit;
@@ -43,9 +39,7 @@ public class CalculatorViewModel extends ViewModel {
 
     public void OnOperator(char newOperator){
         try {
-
             if(isEqualPressed){
-
                 num1 = calculator.getResult();
                 num2 = 0;
                 calculator.setNum1(num1);
@@ -53,8 +47,8 @@ public class CalculatorViewModel extends ViewModel {
                 operator = newOperator;
                 currentInput = "";
                 isNewInput = false;
-                updateDisplay(num1, operator); Log.d("CalculatorViewModel", "if Operator3: "+
-                        operator +" "+ newOperator +" "+ num1 + " "+ num2 + " / "+ calculator.getNum2());
+                updateDisplay(num1, operator);
+                Log.d("CalculatorViewModel", "if Operator3: "+operator +" "+ newOperator +" "+ num1 + " "+ num2 + " / "+ calculator.getNum2());
                 isEqualPressed=false;
 
             }
@@ -114,9 +108,7 @@ public class CalculatorViewModel extends ViewModel {
                 calculator.setNum1(num1);
                 num3 = "";
                 isNewInput = false; // Indicate that a new input is expected
-                Log.d("CalculatorViewModel", "Operator 2: "+
-                        operator +" "+ newOperator +" "+ num1 + " "+ num2);
-                result.setValue(formatNumber(num1) + " " + operator); // Update operation display
+                result.setValue(formatNumber(num1) + " " +operator); // Update operation display
                 operation.setValue(formatNumber(num1)); // Update display to show num1
 
             }
@@ -143,7 +135,8 @@ public class CalculatorViewModel extends ViewModel {
             result.setValue(formatNumber(num1) + " " + operator + " " + formatNumber(num2) + " = " + formatNumber(total)); // Update operation display
             num1 = total; // Update num1 with the result
             calculator.setResult(total);
-            operation.setValue(formatNumber(total)); // Update display to show result
+            operation.setValue(formatNumber(total));
+
             Log.d("CalculatorViewModel", "Equeal 1 Operator: "+
                     operator  +" "+ num1 + " "+ num2 + " / "+ calculator.getNum2()+ " current "+currentInput);
         }
@@ -156,10 +149,15 @@ public class CalculatorViewModel extends ViewModel {
             result.setValue(formatNumber(num1) + " " + operator + " " + formatNumber(num2) + " = " + formatNumber(total)); // Update operation display
             num1 = total; // Update num1 with the result
             calculator.setResult(total);
-            operation.setValue(formatNumber(total)); // Update display to show result
+            operation.setValue(formatNumber(total));
+
+            // Update display to show result
             Log.d("CalculatorViewModel", "Equeal 2 Operator: "+
                     operator  +" "+ num1 + " "+ num2 + " / "+ calculator.getNum2());
 
+        } if (Double.isNaN(num1) || Double.isNaN(num2)) {
+            onClear(); // Call your clear method
+            operation.setValue("NaN"); // Update the display
         }
     }
 

@@ -1,6 +1,9 @@
 package com.example.calculator;
 
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.calculator.viewmodel.CalculatorViewModel;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,10 +90,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void updateResult(String result) {
+
         if (displayTextView2 != null) {
-            displayTextView2.setText(result);
+            Log.d("MainActivity", "updateResult: " + result);
+            Pattern pattern = Pattern.compile("[+\\-*/%]"); // Updated pattern
+            Matcher matcher = pattern.matcher(result);
+
+            if (matcher.find()) {
+                String operator = matcher.group();
+                SpannableString spannableString = new SpannableString(result);
+                int start = result.indexOf(operator);
+                int end = start + operator.length();
+                spannableString.setSpan(new ForegroundColorSpan(getColor(R.color.orange)), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                displayTextView2.setText(spannableString);
+            }else{
+                displayTextView2.setText("");
+
+            }
+
         } else {
-            Log.e("MainActivity", "displayTextView2 is null");
+            Log.d("MainActivity", "displayTextView2 is null");
+            displayTextView2.setText("");
+
         }
     }
 

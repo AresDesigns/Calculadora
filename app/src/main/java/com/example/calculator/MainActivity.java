@@ -1,6 +1,7 @@
 package com.example.calculator;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             button6, button7, button8, button9, buttonDot,
             buttonEquals, buttonPlus, buttonMinus, buttonMultiply,
             buttonDivide, buttonClear, buttonPercent ,buttonDelete, buttonPlusMinus;
+    private String history = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,17 +87,14 @@ public class MainActivity extends AppCompatActivity {
         if (displayTextView != null) {
             displayTextView.setText(operation);
         } else {
-            // Handle the case where displayTextView is null, e.g., log an error or do nothing.
             Log.e("MyClass", "displayTextView is null");
         }
     }
     private void updateResult(String result) {
 
         if (displayTextView2 != null) {
-            Log.d("MainActivity", "updateResult: " + result);
-            Pattern pattern = Pattern.compile("[+\\-*/%]"); // Updated pattern
+            Pattern pattern = Pattern.compile("[+\\-*/%]");
             Matcher matcher = pattern.matcher(result);
-
             if (matcher.find()) {
                 String operator = matcher.group();
                 SpannableString spannableString = new SpannableString(result);
@@ -103,16 +102,25 @@ public class MainActivity extends AppCompatActivity {
                 int end = start + operator.length();
                 spannableString.setSpan(new ForegroundColorSpan(getColor(R.color.orange)), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 displayTextView2.setText(spannableString);
+                setHistory(getHistory()+" "+result+ " " + "\n");//Control for history and check all the operations
+                Log.d("MainActivity", "displayTextView2 is not null" + getHistory());
             }else{
                 displayTextView2.setText("");
 
             }
-
         } else {
             Log.d("MainActivity", "displayTextView2 is null");
             displayTextView2.setText("");
 
         }
+    }
+
+    public String getHistory() {
+        return history;
+    }
+
+    public void setHistory(String history) {
+        this.history = history;
     }
 
     private void setupButtonListeners() {

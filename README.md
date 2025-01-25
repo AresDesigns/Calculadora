@@ -1,11 +1,21 @@
 # 👨🏻‍💻Calculadora para android
 <div align="center">
-<img src="./imagen2.png">
 <p></p>
 </div>
 <div align="center">
 <img src="./imagen1.png">
 <p></p>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+  <img src=./imagen2.png" width="200" style="border-radius: 10px;">
+  <div style="flex: 1;">
+    <h2>Características</h2>
+    <ul>
+      <li>Característica 1</li>
+      <li>Característica 2</li>
+      <li>Característica 3</li>
+    </ul>
+  </div>
 </div>
 
 <div align="center">
